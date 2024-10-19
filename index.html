@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Velocity Publisher</title>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script>
+        function publishData() {
+            const xValue = document.getElementById("x").value;
+            const yValue = document.getElementById("y").value;
+
+            // Connect to an MQTT broker
+            const client = mqtt.connect('wss://broker.emqx.io:8084/mqtt');
+
+            client.on('connect', function () {
+                console.log('Connected to MQTT Broker');
+
+                const message = JSON.stringify({ x: xValue, y: yValue });
+                
+                // Publish values on "robot/cmd_vel" topic
+                client.publish('robot/cmd_vel', message);
+                console.log('Published:', message);
+            });
+
+            client.on('error', function (error) {
+                console.log('Connection error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>Enter Values for x and y:</h2>
+    <label for="x">x:</label>
+    <input type="text" id="x" name="x">
+    <br>
+    <label for="y">y:</label>
+    <input type="text" id="y" name="y">
+    <br><br>
+    <button onclick="publishData()">Send Values</button>
+</body>
+</html>
+
