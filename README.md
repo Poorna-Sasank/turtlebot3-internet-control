@@ -9,6 +9,10 @@
     <br />
   </p>
 </div>
+## FYI
+
+Make sure `TURTLEBOT3_MODEL` is set to `waffle`
+```TURTLEBOT3_MODEL=waffle```
 
 ## Control Methodology
 
