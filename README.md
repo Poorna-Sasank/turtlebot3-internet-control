@@ -11,8 +11,14 @@
 </div>
 ## FYI
 
-Make sure `TURTLEBOT3_MODEL` is set to `waffle`
-```TURTLEBOT3_MODEL=waffle```
+Make sure `TURTLEBOT3_MODEL` is set to `waffle` in your bashrc file
+```sh
+TURTLEBOT3_MODEL=waffle
+```
+and 
+```sh
+GZ_VERSION=HARMONIC
+```
 
 ## Control Methodology
 
